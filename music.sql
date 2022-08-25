@@ -23,7 +23,8 @@ CREATE TABLE albums (
 CREATE TABLE producers (
   id SERIAL PRIMARY KEY,
   producer_name TEXT NOT NULL,
-  artists_produced INT[] REFERENCES artists ON DELETE CASCADE
+  artist_id INT NOT NULL,
+  FOREIGN KEY (artist_id) REFERENCES artists(id) ON DELETE CASCADE
 );
 
 CREATE TABLE songs
@@ -71,31 +72,32 @@ VALUES
 
 INSERT INTO producers (producer_name, artists_produced)
 VALUES
-('Dust Brothers', {1}),
-('Stephen Lironi' {1}),
-('Roy Thomas Baker' {2}),
-('Walter Afanasieff', {3,4}),
-('Benjamin Rice', {5,6}),
-('Rick Parshar', {7}),
-('Al Shux', (8,9))
-('Max Martin', {10,11}),
-('Cirkut', {10,11}),
-('Shellback', {12,13}),
-('Benny Blanco', {12,13}),
-('The Matrix', {14}),
-('Darkchild', {15});
+('Dust Brothers', '{1}'),
+('Stephen Lironi' '{1}'),
+('Roy Thomas Baker' '{2}'),
+('Walter Afanasieff', 3),
+('Walter Afanasieff', 4),
+('Benjamin Rice', '{5,6}'),
+('Rick Parshar', '{7}'),
+('Al Shux', '{8,9}')
+('Max Martin', '{10,11}'),
+('Cirkut', '{10,11}'),
+('Shellback', '{12,13}'),
+('Benny Blanco', '{12,13}'),
+('The Matrix', '{14}'),
+('Darkchild', '{15}');
 
 
 INSERT INTO songs
   (title, duration_in_seconds, release_date, artists, album, producers)
 VALUES
-  ('MMMBop', 238, '04-15-1997', {1}, 1, {1,2}),
-  ('Bohemian Rhapsody', 355, '10-31-1975', {2}, 2, {3}),
-  ('One Sweet Day', 282, '11-14-1995', {3,4}, 3, {4}),
-  ('Shallow', 216, '09-27-2018', {5,6}, 4, {5}),
-  ('How You Remind Me', 223, '08-21-2001', {7}, 5, {6}),
-  ('New York State of Mind', 276, '10-20-2009', {8,9}, 6, {7}),
-  ('Dark Horse', 215, '12-17-2013', {10,11}, 7, {8,9}),
-  ('Moves Like Jagger', 201, '06-21-2011', {12,13}, 8, {10,11}),
-  ('Complicated', 244, '05-14-2002', {14}, 9, {12}),
-  ('Say My Name', 240, '11-07-1999', {15}, 10, {13});
+  ('MMMBop', 238, '04-15-1997', '{1}', 1, '{1,2}'),
+  ('Bohemian Rhapsody', 355, '10-31-1975', '{2}', 2, '{3}'),
+  ('One Sweet Day', 282, '11-14-1995', '{3,4}', 3, '{4}'),
+  ('Shallow', 216, '09-27-2018', '{5,6}', 4, '{5}'),
+  ('How You Remind Me', 223, '08-21-2001', '{7}', 5, '{6}'),
+  ('New York State of Mind', 276, '10-20-2009', '{8,9}', 6, '{7}'),
+  ('Dark Horse', 215, '12-17-2013', '{10,11}', 7, '{8,9}'),
+  ('Moves Like Jagger', 201, '06-21-2011', '{12,13}', 8, '{10,11}'),
+  ('Complicated', 244, '05-14-2002', '{14}', 9, '{12}'),
+  ('Say My Name', 240, '11-07-1999', '{15}', 10, '{13}');
