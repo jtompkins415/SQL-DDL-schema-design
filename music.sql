@@ -33,9 +33,9 @@ CREATE TABLE songs
   title TEXT NOT NULL,
   duration_in_seconds INTEGER NOT NULL,
   release_date DATE NOT NULL,
-  artists INT[] REFERENCES artists,
-  album TEXT REFERENCES albums,
-  producers TEXT[] REFERENCES producers
+  artists INT REFERENCES artists,
+  album INT REFERENCES albums,
+  producers INT REFERENCES producers
 );
 
 
@@ -73,13 +73,13 @@ VALUES
 INSERT INTO producers (producer_name, artists_produced)
 VALUES
 ('Dust Brothers', '{1}'),
-('Stephen Lironi' '{1}'),
-('Roy Thomas Baker' '{2}'),
+('Stephen Lironi', '{1}'),
+('Roy Thomas Baker', '{2}'),
 ('Walter Afanasieff', 3),
 ('Walter Afanasieff', 4),
 ('Benjamin Rice', '{5,6}'),
 ('Rick Parshar', '{7}'),
-('Al Shux', '{8,9}')
+('Al Shux', '{8,9}'),
 ('Max Martin', '{10,11}'),
 ('Cirkut', '{10,11}'),
 ('Shellback', '{12,13}'),
@@ -91,7 +91,7 @@ VALUES
 INSERT INTO songs
   (title, duration_in_seconds, release_date, artists, album, producers)
 VALUES
-  ('MMMBop', 238, '04-15-1997', '{1}', 1, '{1,2}'),
+  ('MMMBop', 238, '04-15-1997', '1', 1, 1),
   ('Bohemian Rhapsody', 355, '10-31-1975', '{2}', 2, '{3}'),
   ('One Sweet Day', 282, '11-14-1995', '{3,4}', 3, '{4}'),
   ('Shallow', 216, '09-27-2018', '{5,6}', 4, '{5}'),
