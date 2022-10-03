@@ -31,7 +31,7 @@ CREATE TABLE seats (
   id SERIAL PRIMARY KEY,
   seat_number TEXT NOT NULL,
   flight_id INT NOT NULL REFERENCES flights ON DELETE CASCADE ,
-  passenger_id INT NOT NULL REFERENCES passengers ON DELETE CASCADE,
+  passenger_id INT NOT NULL REFERENCES passengers ON DELETE CASCADE
 );
 
 
@@ -48,8 +48,22 @@ VALUES
 
 INSERT INTO flights (flight_number, airline, departing_from, departure, traveling_to, arrival)
 VALUES
-('WD45764', 'United', 'Washington DC, US', '2018-04-08 09:00:00', 'Seattle, US', '2018-04-08 12:00:00')
-('TG67593', 'British Airways', 'Tokyo, Japan', '2018-12-19 12:45:00', 'London, UK', '2018-12-19 16:15:00' )
+('WD45764', 'United', 'Washington DC, US', '2018-04-08 09:00:00', 'Seattle, US', '2018-04-08 12:00:00'),
+('TG67593', 'British Airways', 'Tokyo, Japan', '2018-12-19 12:45:00', 'London, UK', '2018-12-19 16:15:00' ),
+('LF59434', 'Delta','Los Angeles, US', '2018-01-02 07:00:00', 'Seattle, US', '2018-04-15 21:00:00'),
+('D3RDG23', 'TUI Fly Belgium', 'Paris, France', '2018-08-01 18:30:00','Casablanca, Morocco', '2018-08-01 21:50:00'),
+('RT453OF', 'Air China', 'Dubai, UAE','2018-10-31 01:15:00', 'Beijing, China', '2018-10-31 12:55:00'),
+('UT34EWA', 'United', 'New York, US', '2019-02-06 06:00:00', 'Charlotte, US', '2019-02-06 07:47:00'),
+('SWF234R', 'American Airlines', 'Cedar Rapids, US', '2018-12-22 14:42:00', 'Chicago, US', '2018-12-22 15:56:00'),
+('CA125NO', 'American Airlines', 'Charlotte, US', '2019-02-06 16:28:00', 'New Orleans, US', '2019-02-06 19:18:00'),
+('TY34OP', 'Avinca Brasil', 'Sao Paolo, Brazil', '2019-01-20 19:30:00', 'Santirago, Chile', '2019-01-20 22:45:00');
+
+INSERT INTO seats (seat_number, flight_id, passenger_id)
+VALUES
+('12B', 1, 1),
+('22D', 2, 2),
+('2A', 3,3);
+
 
 
 
